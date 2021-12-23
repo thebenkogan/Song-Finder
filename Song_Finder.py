@@ -37,6 +37,5 @@ for artist in song_artists:
     artists.append(artist.text)
 
 print("The top 3 songs associated with those lyrics as suggested by lyrics.com are: ")
-print("1.) " + names[0] + " by " + artists[0])
-print("2.) " + names[1] + " by " + artists[1])
-print("3.) " + names[2] + " by " + artists[2])
+for i in range(3):
+    print(f"{i + 1}.) {names[i]} by {artists[i]}")
