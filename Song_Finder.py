@@ -2,15 +2,17 @@ import requests
 from bs4 import BeautifulSoup
 import speech_recognition as sr
 
-re = sr.Recognizer()
-with sr.Microphone() as source:
-    print("Say song lyrics: ")
-    audio = re.listen(source)
-
-try:
-    lyrics = re.recognize_google(audio)
-except Exception:
-    print("Google could not understand what you said.")
+ready = False
+while not ready:
+    re = sr.Recognizer()
+    with sr.Microphone() as source:
+        print("Say song lyrics: ")
+        audio = re.listen(source)
+        try:
+            lyrics = re.recognize_google(audio)
+            ready = True
+        except Exception:
+            print("Google could not understand what you said. Try again.")
 
 print("The lyrics you said: " + lyrics + "\n")
 
